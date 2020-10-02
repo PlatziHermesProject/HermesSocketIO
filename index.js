@@ -3,6 +3,7 @@ const cors = require('cors');
 const socketIO = require('socket.io');
 const http = require('http');
 const https = require('https');
+const db =  require('./config/db-connection');
 const { cfg } = require('./config/config');
 const path = require('path');
 
@@ -16,6 +17,8 @@ const publicPath = path.resolve(__dirname, './public');
 const port = cfg.port;
 
 app.use(express.static(publicPath));
+
+db.connectDB();
 
 module.exports.io = socketIO(server);
 require('./socket/socket_server');
