@@ -10,6 +10,10 @@
 
 <body>
     <h1>Running</h1>
+    <button id="join" onclick="join()">Join private chat</button>
+    <input type="text" id="test">
+    <button id="sendMessage" onclick="send()">send</button>
+    <button onclick="sendWithoutRoom()">No console</button>
 
     <script src="socket.io/socket.io.js"></script>
     <script src="js/client-socket.js"></script>
