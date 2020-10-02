@@ -2,9 +2,12 @@ const { io } = require('./../index');
 const messagesStorage = require('../storage/messages');
 
 async function sendMessagePg(data) {
+  /**
+   * function to save message in DB
+   */
   try{
     if (data.message !== 'you are online') {
-      const rta = await messagesStorage.setMessage(data.message, Date.now(), data.chat_id);
+      const rta = await messagesStorage.setMessage(data.message, Date.now(), data.chat_id, data.user_id);
       return rta
     }
   }catch (error) {
@@ -32,7 +35,8 @@ io.on('connection', (client) => {
     previousChatId = data.chat_id;
     client.emit('sendmessage', {
       message: 'you are online',
-      chat_id: data.chat_id
+      chat_id: data.chat_id,
+      user_id: data.user_id
     });
   });
 });
