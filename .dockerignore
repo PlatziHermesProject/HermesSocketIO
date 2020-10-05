@@ -4,3 +4,6 @@
 
 # ignore the nltk untill it's ready to production
 nltk
+
+# ignore the mac hidden folder
+.DS_Store
